@@ -26,13 +26,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     var juegos : [Juego] = []
     
+    @IBAction func btneditar(_ sender: Any) {
+        tableView.isEditing = true
+    }
+    @IBAction func btneliminar(_ sender: Any) {
+        tableView.isEditing = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.isEditing = true
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
