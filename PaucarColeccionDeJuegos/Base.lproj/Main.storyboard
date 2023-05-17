@@ -33,7 +33,7 @@
                     <navigationItem key="navigationItem" id="pl1-oF-EIe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ffj-Sd-xeR">
                             <connections>
-                                <segue destination="G4e-5X-obD" kind="show" id="iag-CX-hlr"/>
+                                <segue destination="G4e-5X-obD" kind="show" identifier="juegoSegue" id="iag-CX-hlr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -73,6 +73,14 @@
                                     <action selector="agregarTapped:" destination="G4e-5X-obD" eventType="touchUpInside" id="1GS-DD-MMF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E27-5Y-Qaz">
+                                <rect key="frame" x="169" y="390" width="76" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Eliminar"/>
+                                <connections>
+                                    <action selector="eliminarTapped:" destination="G4e-5X-obD" eventType="touchUpInside" id="haM-Nn-Ela"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nbu-19-9zw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -81,9 +89,11 @@
                             <constraint firstItem="N78-Tv-Si6" firstAttribute="centerX" secondItem="W6f-T6-3OC" secondAttribute="centerX" id="AzS-sP-jJf"/>
                             <constraint firstItem="N78-Tv-Si6" firstAttribute="top" secondItem="FCg-4g-cyi" secondAttribute="bottom" constant="20" id="Bnx-tW-uxb"/>
                             <constraint firstItem="FCg-4g-cyi" firstAttribute="centerX" secondItem="W6f-T6-3OC" secondAttribute="centerX" id="FCU-ds-hBv"/>
+                            <constraint firstItem="E27-5Y-Qaz" firstAttribute="top" secondItem="N78-Tv-Si6" secondAttribute="bottom" constant="15" id="ZfH-2r-G6q"/>
                             <constraint firstItem="fmQ-sq-xOr" firstAttribute="top" secondItem="nbu-19-9zw" secondAttribute="top" constant="32" id="bwj-CL-HNW"/>
                             <constraint firstItem="FCg-4g-cyi" firstAttribute="width" secondItem="fmQ-sq-xOr" secondAttribute="width" id="kQW-JB-uT8"/>
                             <constraint firstItem="fmQ-sq-xOr" firstAttribute="centerX" secondItem="W6f-T6-3OC" secondAttribute="centerX" id="lle-SB-eQ5"/>
+                            <constraint firstItem="E27-5Y-Qaz" firstAttribute="centerX" secondItem="W6f-T6-3OC" secondAttribute="centerX" id="pqx-g8-4F3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4m9-ty-Baw">
@@ -101,6 +111,8 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="agregarActualizarBoton" destination="N78-Tv-Si6" id="CKn-av-Ldh"/>
+                        <outlet property="eliminarBoton" destination="E27-5Y-Qaz" id="OAB-2V-sgC"/>
                         <outlet property="imageView" destination="fmQ-sq-xOr" id="vGL-rT-E2V"/>
                         <outlet property="tituloTextField" destination="FCg-4g-cyi" id="k9R-Aa-hhY"/>
                     </connections>

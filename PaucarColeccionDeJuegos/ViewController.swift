@@ -32,6 +32,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.isEditing = true
     }
     override func viewWillAppear(_ animated: Bool) {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -43,6 +44,42 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let juego = juegos[indexPath.row]
+        performSegue(withIdentifier: "juegoSegue",
+           sender: juego)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let siguienteVC = segue.destination as! JuegosViewController
+        siguienteVC.juego = sender as? Juego
 
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return.delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+                    _ = UITableViewCell()
+            let curso = juegos[indexPath.row]
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                    context.delete(curso)
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            juegos.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+
+    }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedObject = juegos[sourceIndexPath.row]
+            juegos.remove(at: sourceIndexPath.row)
+            juegos.insert(movedObject, at:destinationIndexPath.row)
+    }
 }
 
